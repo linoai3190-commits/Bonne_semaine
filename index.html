@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#5a0f1f">
+<title>Bonjour, ma Princesse ❤️</title>
+<style>
+/* ===== Palette : rose poudré, rouge cerise, bordeaux ===== */
+:root{
+  --poudre:#f7d9dc; --rose:#e8899a; --cerise:#c1121f; --bordeaux:#4a0b19; --creme:#fff4f2;
+  --serif:Georgia,"Palatino Linotype",Palatino,"Times New Roman",serif;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{
+  font-family:var(--serif); color:var(--creme); overflow-x:hidden;
+  background:linear-gradient(160deg,#6b1226 0%,var(--bordeaux) 38%,#2d0610 100%);
+  background-attachment:fixed;
+}
+/* voile rose poudré en haut, comme une lumière de matin */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 50% -10%,rgba(247,217,220,.55),transparent 60%),
+             radial-gradient(ellipse at 50% 45%,rgba(193,18,31,.35),transparent 55%);
+}
+#fx{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+main{
+  position:relative;z-index:2;max-width:560px;margin:0 auto;
+  padding:calc(env(safe-area-inset-top,0px) + 28px) 22px calc(env(safe-area-inset-bottom,0px) + 40px);
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+
+/* ===== Cœur central ===== */
+.heart-wrap{width:min(56vw,230px);margin:6px 0 4px;filter:drop-shadow(0 0 28px rgba(232,40,70,.65))}
+.heart{width:100%;display:block;transform-origin:50% 55%;animation:beat 1.6s ease-in-out infinite}
+.heart.fast{animation-duration:.55s}
+@keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.09)}28%{transform:scale(1)}42%{transform:scale(1.06)}70%{transform:scale(1)}}
+.ecg{stroke-dasharray:260;stroke-dashoffset:260;animation:ecg 3.2s linear infinite}
+.heart.fast .ecg{animation-duration:1.1s}
+@keyframes ecg{0%{stroke-dashoffset:260}60%,100%{stroke-dashoffset:0}}
+
+/* ===== Roses qui apparaissent une à une ===== */
+.roses{display:flex;gap:10px;justify-content:center;font-size:1.7rem;margin:2px 0 14px;min-height:2.2rem}
+.roses span{opacity:0;transform:scale(.2) rotate(-25deg);transition:opacity .8s,transform .9s cubic-bezier(.2,1.4,.4,1)}
+.roses span.on{opacity:1;transform:none}
+
+/* ===== Texte ===== */
+h1{font-weight:400;font-style:italic;font-size:clamp(2rem,9vw,2.8rem);line-height:1.1;letter-spacing:.01em;color:var(--poudre);text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.croix{display:inline-block;width:.55em;height:.55em;margin-right:.35em;vertical-align:.05em;opacity:.8}
+.line{opacity:0;transform:translateY(10px);transition:opacity 1s ease,transform 1s ease;font-size:1.08rem;line-height:1.55;margin-top:16px;max-width:30em;text-wrap:pretty}
+.line.show{opacity:1;transform:none}
+.final{font-size:1.2rem;font-style:italic;color:var(--poudre);padding:16px 18px;border-radius:18px;
+  background:linear-gradient(135deg,rgba(193,18,31,.45),rgba(247,217,220,.12));
+  border:1px solid rgba(247,217,220,.35);box-shadow:0 8px 30px rgba(0,0,0,.25)}
+
+/* ===== Boutons ===== */
+.btn{
+  appearance:none;border:0;cursor:pointer;font:inherit;font-size:1.1rem;color:#fff;
+  min-height:52px;padding:14px 28px;border-radius:999px;margin-top:22px;
+  background:linear-gradient(135deg,#e8283f,var(--cerise) 55%,#8f0d1b);
+  box-shadow:0 0 0 1px rgba(255,255,255,.2) inset,0 6px 22px rgba(232,40,70,.55);
+  animation:glow 2.4s ease-in-out infinite;transition:transform .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn:active{transform:scale(.96)}
+.btn:focus-visible{outline:3px solid var(--poudre);outline-offset:3px}
+.btn.soft{background:rgba(247,217,220,.14);box-shadow:0 0 0 1px rgba(247,217,220,.5) inset;animation:none;font-size:1rem;min-height:48px;margin-top:14px}
+@keyframes glow{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.2) inset,0 6px 22px rgba(232,40,70,.5)}50%{box-shadow:0 0 0 1px rgba(255,255,255,.3) inset,0 6px 36px rgba(255,90,110,.9)}}
+[hidden]{display:none!important}
+
+/* ===== Ordonnance : vue plein écran (redirection sans quitter le fichier) ===== */
+#fx{z-index:6}
+.ordo{position:fixed;inset:0;z-index:4;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  background:linear-gradient(160deg,#6b1226,var(--bordeaux) 45%,#2d0610);
+  padding:calc(env(safe-area-inset-top,0px) + 18px) 14px calc(env(safe-area-inset-bottom,0px) + 30px);
+  animation:slide .6s cubic-bezier(.2,.9,.3,1)}
+@keyframes slide{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.sheet{position:relative;max-width:520px;margin:0 auto;padding:24px 20px 28px;border-radius:6px 6px 22px 22px;
+  background:linear-gradient(#fffaf7,#fbe9e6);color:var(--bordeaux);text-align:left;
+  box-shadow:0 14px 44px rgba(0,0,0,.5);border-top:8px solid var(--cerise)}
+.sheet header{text-align:center;border-bottom:1px dashed rgba(74,11,25,.4);padding-bottom:12px}
+.sheet h2{font-weight:400;font-style:italic;font-size:1.55rem;color:var(--cerise)}
+.sheet .meta{font-size:.9rem;margin-top:4px;opacity:.85}
+.sheet .rx-sym{font-size:2rem;color:var(--cerise);line-height:1;margin:14px 0 4px;font-style:italic}
+.rx-list{list-style:none;padding:0}
+.rx-list li{padding:12px 0 12px 14px;border-bottom:1px dotted rgba(74,11,25,.3);border-left:3px solid var(--rose);margin-bottom:6px;
+  opacity:0;animation:pop .6s ease forwards;animation-delay:calc(.5s + var(--i)*.35s)}
+.rx-list b{display:block;font-size:1.08rem}
+.rx-list .dose{display:block;font-size:.95rem;color:var(--cerise);margin-top:2px}
+.rx-list em{display:block;font-size:.92rem;opacity:.85;margin-top:2px}
+.effets{margin-top:14px;font-size:.95rem;font-style:italic;line-height:1.5}
+.signature{margin-top:18px;min-height:96px;position:relative}
+.signature .sig{font-style:italic;font-size:1.25rem}
+.signature .sig small{display:block;font-size:.8rem;opacity:.7;font-style:normal}
+/* cachet : tampon qui s'abat sur l'ordonnance */
+.stamp{position:absolute;right:2px;top:-6px;width:112px;height:112px;border-radius:50%;
+  border:3px double var(--cerise);color:var(--cerise);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;font-size:.72rem;line-height:1.25;font-weight:700;letter-spacing:.04em;
+  background:rgba(193,18,31,.06);opacity:0;transform:rotate(-16deg) scale(2.4);mix-blend-mode:multiply}
+.stamp i{font-style:normal;font-size:1.5rem}
+.stamp.on{animation:tampon .45s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes tampon{0%{opacity:0;transform:rotate(-16deg) scale(2.4)}70%{opacity:.95;transform:rotate(-16deg) scale(.92)}100%{opacity:.88;transform:rotate(-16deg) scale(1)}}
+.sheet .btn{display:block;width:100%;margin-top:14px}
+.sheet .btn.soft{background:var(--bordeaux);color:#fff;box-shadow:none}
+.sheet .btn.back{background:transparent;color:var(--bordeaux);box-shadow:0 0 0 1px rgba(74,11,25,.4) inset;animation:none;font-size:.98rem;min-height:46px}
+.renouv{margin-top:12px;min-height:3em;font-style:italic;color:var(--cerise);font-size:1.05rem;text-align:center;animation:pop .5s ease}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.95)}to{opacity:1;transform:none}}
+
+/* ===== Effets (pétales, cœurs, étoiles) ===== */
+.petal{position:absolute;top:-30px;width:var(--s);height:calc(var(--s)*1.3);
+  background:radial-gradient(circle at 30% 30%,#ff9aa8,var(--cerise) 70%);
+  border-radius:150% 0 150% 0;opacity:.85;animation:fall var(--d) linear forwards}
+@keyframes fall{
+  0%{transform:translate3d(0,0,0) rotate(0)}
+  50%{transform:translate3d(var(--x),55vh,0) rotate(200deg)}
+  100%{transform:translate3d(calc(var(--x)*-.6),112vh,0) rotate(420deg);opacity:.5}}
+.float{position:absolute;bottom:-40px;font-size:var(--s);animation:rise var(--d) ease-out forwards}
+@keyframes rise{
+  0%{transform:translate3d(0,0,0) scale(.6);opacity:0}
+  15%{opacity:1}
+  100%{transform:translate3d(var(--x),-105vh,0) scale(1.1);opacity:0}}
+.star{position:absolute;color:#ffe9ec;font-size:var(--s);animation:tw var(--d) ease-in-out infinite;animation-delay:var(--l)}
+@keyframes tw{0%,100%{opacity:.1;transform:scale(.7)}50%{opacity:.95;transform:scale(1.1)}}
+
+/* ===== Mouvement réduit : tout reste visible, rien ne bouge en continu ===== */
+@media (prefers-reduced-motion:reduce){
+  .heart,.ecg,.btn,.star{animation:none!important}
+  .ecg{stroke-dashoffset:0}
+  .line,.roses span{transition:none}
+  .ordo,.renouv,.rx-list li{animation:none;opacity:1}
+  .stamp.on{animation:none;opacity:.88;transform:rotate(-16deg)}
+}
+</style>
+</head>
+<body>
+<div id="fx" aria-hidden="true"></div>
+
+<main>
+  <!-- Grand cœur avec un discret tracé de rythme cardiaque -->
+  <div class="heart-wrap" aria-hidden="true">
+    <svg class="heart" id="heart" viewBox="0 0 100 92">
+      <defs>
+        <radialGradient id="hg" cx="35%" cy="30%" r="80%">
+          <stop offset="0" stop-color="#ff6b7d"/><stop offset=".55" stop-color="#d4162a"/><stop offset="1" stop-color="#8a0c1b"/>
+        </radialGradient>
+      </defs>
+      <path d="M50 88 C18 62 4 46 4 28 C4 14 15 4 28 4 C38 4 46 10 50 18 C54 10 62 4 72 4 C85 4 96 14 96 28 C96 46 82 62 50 88Z" fill="url(#hg)"/>
+      <path d="M17 17 C22 10 31 9 36 12" stroke="rgba(255,255,255,.55)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <polyline class="ecg" points="12,46 32,46 39,46 44,30 52,62 58,40 63,46 88,46" fill="none" stroke="#fff4f2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+    </svg>
+  </div>
+
+  <div class="roses" id="roses" aria-hidden="true"><span>🌹</span><span>🌹</span><span>🌹</span><span>🌹</span><span>🌹</span></div>
+
+  <h1 class="line" id="titre">
+    <svg class="croix" viewBox="0 0 10 10" aria-hidden="true"><path d="M3.5 0h3v3.5H10v3H6.5V10h-3V6.5H0v-3h3.5z" fill="#f7d9dc"/></svg>Bonjour, ma Princesse ❤️👑
+  </h1>
+  <p class="line">Une nouvelle semaine commence, Docteure… et moi, je commence la mienne avec une pensée pour toi. 🌹</p>
+  <p class="line">Je te souhaite des journées douces, de belles nouvelles, du courage pour tes gardes et quelques instants rien qu'à toi.</p>
+  <p class="line">Entre les patients, les dossiers et les urgences, n'oublie pas qu'il existe un cœur qui aimerait bien être inscrit sur ta liste des petites douceurs à ne pas négliger. 😏❤️</p>
+  <p class="line">Et pour le diagnostic du jour : tu es dangereusement adorable. Le pronostic ? Un sourire contagieux et un admirateur qui ne cherche même pas de traitement. 😂💋</p>
+  <p class="line final">Bonne semaine, mon amour. Que la vie soit douce avec toi… et si elle ne l'est pas, j'aimerais au moins pouvoir t'offrir un peu de douceur. ❤️🌹</p>
+
+  <button class="btn line" id="btnRx" type="button">Prescription du matin 💋</button>
+
+</main>
+
+<!-- Vue « ordonnance » : s'ouvre au clic, dans le même fichier -->
+<div class="ordo" id="ordo" hidden role="dialog" aria-modal="true" aria-label="Ordonnance">
+  <article class="sheet">
+    <header>
+      <h2>✚ Ordonnance du Cœur</h2>
+      <p class="meta">Patiente : Docteure, ma Princesse 👑<br><span id="dateOrdo"></span></p>
+    </header>
+    <p class="rx-sym">℞</p>
+    <ol class="rx-list">
+      <li style="--i:0"><b>💋 Bisou sur le front</b><span class="dose">1 dose, au réveil, avant la garde</span><em>Pour te donner du courage.</em></li>
+      <li style="--i:1"><b>😘 Baiser volé</b><span class="dose">1 dose, entre deux patients</span><em>Pour te faire sourire sans prévenir.</em></li>
+      <li style="--i:2"><b>🤗 Câlin gardé en réserve</b><span class="dose">1 dose, dès que tu peux souffler</span><em>À prendre longtemps, sans modération.</em></li>
+      <li style="--i:3"><b>💌 Pensée tendre</b><span class="dose">3 doses par jour, matin, midi et soir</span><em>En cas de fatigue, doubler la dose.</em></li>
+    </ol>
+    <p class="effets">Durée du traitement : toute la semaine, renouvelable à l'infini.<br>Effets secondaires : sourire devant son téléphone et suspecter quelqu'un d'être beaucoup trop amoureux. 😂🌹</p>
+    <div class="signature">
+      <div class="sig">Ton admirateur<small>Médecin traitant de ton sourire</small></div>
+      <div class="stamp" id="stamp" aria-hidden="true"><i>❤</i>CACHET<br>DU CŒUR<br>VALIDÉ</div>
+    </div>
+    <button class="btn soft" id="btnRenew" type="button">Renouveler la prescription 😏</button>
+    <div class="renouv" id="renouv" aria-live="polite"></div>
+    <button class="btn back" id="btnBack" type="button">Retour au message 🌹</button>
+  </article>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var fx = document.getElementById('fx');
+  var heart = document.getElementById('heart');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MAX_NODES = 60; // garde la page légère sur téléphone
+  function rnd(a,b){ return a + Math.random()*(b-a); }
+
+  /* Ajoute un élément à la couche d'effets puis le retire à la fin de son animation */
+  function add(el, life){
+    if (fx.children.length > MAX_NODES) return;
+    fx.appendChild(el);
+    setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); }, life*1000+200);
+  }
+  function petal(){
+    var p = document.createElement('div'), d = rnd(7,12);
+    p.className = 'petal';
+    p.style.cssText = '--s:'+rnd(10,18)+'px;--d:'+d+'s;--x:'+rnd(-70,70)+'px;left:'+rnd(0,100)+'%';
+    add(p,d);
+  }
+  function floatHeart(chars){
+    var h = document.createElement('span'), d = rnd(4.5,7.5);
+    h.className = 'float';
+    h.textContent = chars[Math.floor(Math.random()*chars.length)];
+    h.style.cssText = '--s:'+rnd(16,30)+'px;--d:'+d+'s;--x:'+rnd(-50,50)+'px;left:'+rnd(4,94)+'%';
+    add(h,d);
+  }
+
+  /* Étoiles scintillantes : fixes, générées une seule fois */
+  for (var i=0;i<14;i++){
+    var s = document.createElement('span');
+    s.className = 'star'; s.textContent = '✦';
+    s.style.cssText = '--s:'+rnd(8,15)+'px;--d:'+rnd(2.5,5)+'s;--l:'+rnd(0,4)+'s;left:'+rnd(2,96)+'%;top:'+rnd(2,90)+'%';
+    fx.appendChild(s);
+  }
+
+  /* Pluie douce et continue de pétales / petits cœurs (en pause si l'onglet est caché) */
+  var ambient = null;
+  function startAmbient(){
+    if (reduced || ambient) return;
+    ambient = setInterval(function(){
+      petal();
+      if (Math.random() < .35) floatHeart(['❤️','💕','🌹']);
+    }, 900);
+  }
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden){ clearInterval(ambient); ambient = null; } else { startAmbient(); }
+  });
+
+  /* Pluie festive au clic */
+  function burst(n){
+    if (reduced){ for (var k=0;k<5;k++) floatHeart(['❤️','🌹']); return; }
+    for (var k=0;k<n;k++){
+      (function(j){ setTimeout(function(){
+        if (j%3===0) floatHeart(['🌹','❤️','💖','💋']); else petal();
+        if (j%4===0) floatHeart(['❤️','💕']);
+      }, j*55); })(k);
+    }
+  }
+
+  /* ===== Apparition progressive du message ===== */
+  var roses = document.querySelectorAll('#roses span');
+  var lines = document.querySelectorAll('.line');
+  roses.forEach(function(r,i){ setTimeout(function(){ r.classList.add('on'); }, reduced ? 0 : 500+i*450); });
+  lines.forEach(function(l,i){ setTimeout(function(){ l.classList.add('show'); }, reduced ? 0 : 1200+i*1900); });
+  startAmbient();
+
+  /* ===== Bouton « Prescription du matin » : ouvre l'ordonnance ===== */
+  var btnRx = document.getElementById('btnRx');
+  var ordo = document.getElementById('ordo');
+  var stamp = document.getElementById('stamp');
+  var btnRenew = document.getElementById('btnRenew');
+  var btnBack = document.getElementById('btnBack');
+  var renouv = document.getElementById('renouv');
+  var stampTimer = null;
+
+  document.getElementById('dateOrdo').textContent =
+    new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+
+  function ouvrirOrdonnance(){
+    heart.classList.add('fast');                                      // le cœur accélère…
+    setTimeout(function(){ heart.classList.remove('fast'); }, 2000);  // …pendant 2 secondes
+    burst(34);
+    ordo.hidden = false;
+    ordo.scrollTop = 0;
+    // on rejoue le tampon à chaque ouverture
+    stamp.classList.remove('on'); void stamp.offsetWidth;
+    clearTimeout(stampTimer);
+    stampTimer = setTimeout(function(){ stamp.classList.add('on'); burst(10); }, reduced ? 0 : 2300);
+    btnBack.focus({preventScroll:true});
+    btnRx.textContent = 'Revoir mon ordonnance 💋';
+  }
+  function fermerOrdonnance(){ ordo.hidden = true; btnRx.focus({preventScroll:true}); }
+
+  btnRx.addEventListener('click', ouvrirOrdonnance);
+  btnBack.addEventListener('click', fermerOrdonnance);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !ordo.hidden) fermerOrdonnance(); });
+
+  /* ===== Bouton « Renouveler la prescription » ===== */
+  var messages = [
+    'Bisou renouvelé. Aucun générique ne peut remplacer l\u2019original. 💋',
+    'Docteure, votre sourire est mon traitement préféré. ❤️',
+    'Attention : stock de bisous illimité, livraison affective en cours. 😂🌹'
+  ];
+  var dernier = -1;
+  btnRenew.addEventListener('click', function(){
+    var n; do { n = Math.floor(Math.random()*messages.length); } while (n === dernier);
+    dernier = n;
+    var neuf = renouv.cloneNode(false);   // nouveau nœud pour rejouer l'animation
+    neuf.textContent = messages[n];
+    renouv.parentNode.replaceChild(neuf, renouv);
+    renouv = neuf;
+    burst(22);
+  });
+})();
+</script>
+</body>
+</html>
